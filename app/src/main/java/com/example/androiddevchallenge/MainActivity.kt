@@ -101,7 +101,7 @@ fun MyApp(appState: AppState, onClick: () -> Unit = {}) {
                     list.chunked(5).forEachIndexed { index, dataItems ->
                         stickyHeader {
                             Card(backgroundColor = MaterialTheme.colors.secondary) {
-                                Text("Section $index")
+                                Text("Section $index", style = MaterialTheme.typography.h3)
                             }
                         }
                         items(dataItems) {
