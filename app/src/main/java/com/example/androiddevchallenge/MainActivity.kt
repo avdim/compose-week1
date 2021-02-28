@@ -89,6 +89,7 @@ fun MyApp(appState: AppState, onClick: () -> Unit = {}) {
             ) {
                 Text("Card")
             }
+            Divider(color = Color.Black)
             Box(
                 Modifier
                     .border(4.dp, color = MaterialTheme.colors.primary)
