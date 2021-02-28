@@ -20,13 +20,12 @@ import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 // Start building your app here!
 @Composable
 fun MyApp(appState: AppState, onClick: () -> Unit = {}) {
-    val border = animateDpAsState(10.dp + appState.count.dp*2)
+    val border = animateDpAsState(10.dp + appState.count.dp * 2)
     Surface(color = MaterialTheme.colors.background) {
         Column {
             Text(
@@ -77,19 +76,24 @@ fun MyApp(appState: AppState, onClick: () -> Unit = {}) {
                 modifier = Modifier
                     .border(4.dp, color = MaterialTheme.colors.primary)
                     .padding(24.dp)
+                    .align(Alignment.End)
             )
             Button(onClick = onClick) {
                 Text("click me ${appState.count}")
             }
-            Card(backgroundColor = Color.Cyan) {
-                
+            Card(
+                backgroundColor = Color.Cyan,
+                modifier = Modifier
+                    .width(80.dp)
+                    .height(30.dp)
+            ) {
+                Text("Card")
             }
             Box(
                 Modifier
                     .border(4.dp, color = MaterialTheme.colors.primary)
                     .padding(border.value)
             )
-
         }
     }
 }
