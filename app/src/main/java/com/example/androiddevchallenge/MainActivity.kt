@@ -18,17 +18,19 @@ package com.example.androiddevchallenge
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -67,6 +69,7 @@ class MainActivity : AppCompatActivity() {
 // Start building your app here!
 @Composable
 fun MyApp(appState: AppState, onClick: () -> Unit = {}) {
+    val border = animateDpAsState(10.dp + appState.count.dp*2)
     Surface(color = MaterialTheme.colors.background) {
         Column {
             Text(
@@ -78,6 +81,15 @@ fun MyApp(appState: AppState, onClick: () -> Unit = {}) {
             Button(onClick = onClick) {
                 Text("click me ${appState.count}")
             }
+            Card(backgroundColor = Color.Cyan) {
+                
+            }
+            Box(
+                Modifier
+                    .border(4.dp, color = MaterialTheme.colors.primary)
+                    .padding(border.value)
+            )
+
         }
     }
 }
