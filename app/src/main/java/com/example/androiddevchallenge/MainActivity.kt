@@ -105,7 +105,7 @@ fun MyApp(appState: AppState, onClick: () -> Unit = {}) {
                             }
                         }
                         items(dataItems) {
-                            Text(it)
+                            Greeting(it)
                         }
                     }
                     repeat(appState.count / 5) { section ->
